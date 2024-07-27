@@ -42,6 +42,7 @@ namespace HotelReservation.UI
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadHotels();
+            dtReservation.SelectionChanged += dtReservation_SelectionChanged;
 
         }
 
@@ -103,12 +104,11 @@ namespace HotelReservation.UI
             cmbRoom.DisplayMember = "Id";
             cmbRoom.DataSource = rooms;
         }
-        int selectedRoom;
+
 
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedRoom = (int)cmbRoom.SelectedValue;
-            //MessageBox.Show(selectedRoom.ToString());
+
         }
 
         public static List<Booking> bookingsList { get; set; } = new List<Booking>();
@@ -119,56 +119,150 @@ namespace HotelReservation.UI
                 .FirstOrDefault(r => r.RoomTypeID == selectedRoomTypeId && r.HotelId == selectedHotelId);
 
             int numberOfRecords = (int)nmGuest.Value;
-            using (GuestForm guestForm = new GuestForm(numberOfRecords))
+            if (numberOfRecords == 0)
             {
-                if (guestForm.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("Lütfen en az bir misafir sayýsý girin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            try
+            {
+                using (GuestForm guestForm = new GuestForm(numberOfRecords))
                 {
-                    foreach (var guest in GuestList.Guests)
+                    if (guestForm.ShowDialog() == DialogResult.OK)
                     {
-                        Booking booking = new Booking()
+                        foreach (var guest in GuestList.Guests)
                         {
-                            CheckinDate = dtGiris.Value,
-                            CheckoutDate = dtCikis.Value,
-                            TotalPrice = selectedRoom.RoomType.PricePerNight,
-                            RoomID = selectedRoom.Id,
-                            Room = selectedRoom,
-                            GuestID = guest.Id,
-                            CreateAt = DateTime.Now,
-                            UpdatedDate = DateTime.Now,
-                            Guest = guest,
-                        };
+                            Booking booking = new Booking()
+                            {
+                                CheckinDate = dtGiris.Value,
+                                CheckoutDate = dtCikis.Value,
+                                TotalPrice = selectedRoom.RoomType.PricePerNight,
+                                RoomID = selectedRoom.Id,
+                                Room = selectedRoom,
+                                GuestID = guest.Id,
+                                CreateAt = DateTime.Now,
+                                UpdatedDate = DateTime.Now,
+                                Guest = guest,
+                            };
 
-                        _bookingService.Create(booking);
-                        //MessageBox.Show(booking.Guest.FirstName);
-                        bookingsList.Add(booking);
-                        var bookings = _bookingService.GetAll();
-                        dtReservation.DataSource = bookings;
-                        //MessageBox.Show(guest.FirstName.ToString());
+                            _bookingService.Create(booking);
+                            //MessageBox.Show(booking.Guest.FirstName);
+                            bookingsList.Add(booking);
+                            LoadBookings();
+                            //MessageBox.Show(guest.FirstName.ToString());
 
 
-                    }
-                    foreach (var booking in bookingsList)
-                    {
-                        BookingGuest bookingGuest = new BookingGuest()
+                        }
+                        /* 
+                        foreach (var booking in bookingsList)
                         {
-                            BookingID = booking.Id,
-                            Booking = booking,
-                            GuestID = booking.Guest.Id,
-                            Guest = booking.Guest
-                        };
-                        _bookingGuestService.Create(bookingGuest);
-                        //MessageBox.Show(bookingGuest.Guest.FirstName);
-                        //
+                            BookingGuest bookingGuest = new BookingGuest()
+                            {
+                                BookingID = booking.Id,
+                                Booking = booking,
+                                GuestID = booking.Guest.Id,
+                                Guest = booking.Guest
+                            };
+                            _bookingGuestService.Create(bookingGuest);
+                            //MessageBox.Show(bookingGuest.Guest.FirstName);
+                            //
+                        }*/
                     }
 
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                GuestList.Guests.Clear();
+
+            }
+
+
+        }
+        Booking selectedBooking;
+        private void dtReservation_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtReservation.SelectedRows.Count > 0)
+            {
+                var bookingId = (Guid)dtReservation.SelectedRows[0].Cells["Id"].Value;
+                selectedBooking = _bookingService.GetByID(bookingId);
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedBooking != null)
+            {
+                var confirmResult = MessageBox.Show("Bu rezervasyonu silmek istediðinizden emin misiniz?",
+                                                     "Onay",
+                                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        _bookingService.Delete(selectedBooking.Id);
+                        bookingsList.Remove(selectedBooking);
+
+                        LoadBookings();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Silme iþlemi sýrasýnda bir hata oluþtu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek istediðiniz rezervasyonu seçin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void LoadBookings()
+        {
+            var bookings = _bookingService.GetAll();
+
+            dtReservation.DataSource = null;
+            dtReservation.DataSource = bookings;
+
+            // Kolon baþlýklarýný düzenleme
+            dtReservation.Columns["CheckinDate"].HeaderText = "Giriþ Tarihi";
+            dtReservation.Columns["CheckoutDate"].HeaderText = "Çýkýþ Tarihi";
+            dtReservation.Columns["TotalPrice"].HeaderText = "Toplam Fiyat";
+            dtReservation.Columns["RoomID"].HeaderText = "Oda Numarasý";
+            dtReservation.Columns["CreateAt"].HeaderText = "Oluþturma Tarihi";
+
+            // Gereksiz kolonlarý gizleme
+            dtReservation.Columns["IsDeleted"].Visible = false;
+            dtReservation.Columns["Room"].Visible = false;
+            dtReservation.Columns["Guest"].Visible = false;
+            dtReservation.Columns["UpdatedDate"].Visible = false;
+            dtReservation.Columns["BookingGuests"].Visible = false;
+            dtReservation.Columns["GuestID"].Visible = false ;
+            dtReservation.Columns["Id"].Visible = false;
+
+
+
+            // Tarih formatlarýný ayarlama
+            dtReservation.Columns["CheckinDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dtReservation.Columns["CheckoutDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dtReservation.Columns["CreateAt"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+
+
+            // Alternatif satýr renkleri
+            dtReservation.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
+            // Kolon geniþliklerini ayarlama (isteðe baðlý)
+            dtReservation.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
         }
         private void nmGuest_ValueChanged(object sender, EventArgs e)
         {
 
         }
-
 
     }
 }

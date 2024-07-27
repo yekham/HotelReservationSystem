@@ -20,7 +20,7 @@ namespace HotelReservation.UI.Forms
         private readonly BookingService _bookingService;
         private readonly GuestService _guestService;
         private readonly BookingGuestService _bookingGuestService;
-        private int numberOfRecords;
+        private int _numberOfRecords;
         public GuestForm(int numberOfRecords)
         {
             InitializeComponent();
@@ -35,14 +35,16 @@ namespace HotelReservation.UI.Forms
 
             var bookingGuestRepository = new BookingGuestRepository(dbContext);
             _bookingGuestService = new BookingGuestService(bookingGuestRepository);
-            this.numberOfRecords = numberOfRecords;
+            _numberOfRecords = numberOfRecords;
+            GuestList.Guests.Clear();
+
         }
 
         private void btnGuest_Click(object sender, EventArgs e)
         {
-            if (GuestList.Guests.Count < numberOfRecords)
+
+            if (GuestList.Guests.Count < _numberOfRecords)
             {
-                // Misafir bilgilerini form kontrollerinden alın
                 Guest guest = new Guest()
                 {
                     FirstName = txtName.Text,
@@ -60,16 +62,16 @@ namespace HotelReservation.UI.Forms
                 txtMail.Text = "";
                 txtTel.Text = "";
                 txtAdress.Text = "";
-
+/*
                 BookingGuest bookingGuest = new BookingGuest()
                 {
                     Guest = guest,
                     GuestID = guest.Id,
                 };
                 //_bookingGuestService.Create(bookingGuest);
-                GuestList.BookingGuest.Add(bookingGuest);
+                GuestList.BookingGuest.Add(bookingGuest);*/
 
-                if (GuestList.Guests.Count == numberOfRecords)
+                if (GuestList.Guests.Count == _numberOfRecords)
                 {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -77,14 +79,14 @@ namespace HotelReservation.UI.Forms
             }
             else
             {
-                MessageBox.Show("Zaten eklenmis");
+                MessageBox.Show("Lutfen kisi sayisi seciniz.");
             }
         }
     }
     public static class GuestList
     {
         public static List<Guest> Guests { get; set; } = new List<Guest>();
-        public static List<BookingGuest> BookingGuest { get; set; } = new List<BookingGuest>();
+        //public static List<BookingGuest> BookingGuest { get; set; } = new List<BookingGuest>();
     }
 
 }
