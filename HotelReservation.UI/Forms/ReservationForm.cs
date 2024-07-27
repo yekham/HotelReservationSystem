@@ -158,6 +158,7 @@ namespace HotelReservation.UI
                         };
                         _bookingGuestService.Create(bookingGuest);
                         //MessageBox.Show(bookingGuest.Guest.FirstName);
+                        //
                     }
 
                 }
