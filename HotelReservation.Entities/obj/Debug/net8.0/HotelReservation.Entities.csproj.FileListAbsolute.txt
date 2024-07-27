@@ -1,0 +1,12 @@
+C:\source\repos\HotelReservation\HotelReservation.Entities\bin\Debug\net8.0\HotelReservation.Entities.deps.json
+C:\source\repos\HotelReservation\HotelReservation.Entities\bin\Debug\net8.0\HotelReservation.Entities.dll
+C:\source\repos\HotelReservation\HotelReservation.Entities\bin\Debug\net8.0\HotelReservation.Entities.pdb
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.AssemblyInfoInputs.cache
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.AssemblyInfo.cs
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.csproj.CoreCompileInputs.cache
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.sourcelink.json
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.dll
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\refint\HotelReservation.Entities.dll
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\HotelReservation.Entities.pdb
+C:\source\repos\HotelReservation\HotelReservation.Entities\obj\Debug\net8.0\ref\HotelReservation.Entities.dll

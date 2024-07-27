@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\source\\repos\\HotelReservation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|c:\\source\\repos\\hotelreservation\\hotelreservation.ui\\forms\\reservationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|solutionrelative:hotelreservation.ui\\forms\\reservationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|c:\\source\\repos\\hotelreservation\\hotelreservation.ui\\forms\\guestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|solutionrelative:hotelreservation.ui\\forms\\guestform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 242,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{9681d69d-90e5-4d1d-ad3c-0da0fcddf13c}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{131369f2-062d-44a2-8671-91ff31efb4f4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c93a910a-0fa6-4307-93a4-f2bd61ec7828}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GuestForm.cs",
+              "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\GuestForm.cs",
+              "RelativeDocumentMoniker": "HotelReservation.UI\\Forms\\GuestForm.cs",
+              "ToolTip": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\GuestForm.cs",
+              "RelativeToolTip": "HotelReservation.UI\\Forms\\GuestForm.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAMwEQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T17:41:06.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReservationForm.cs",
+              "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\ReservationForm.cs",
+              "RelativeDocumentMoniker": "HotelReservation.UI\\Forms\\ReservationForm.cs",
+              "ToolTip": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\ReservationForm.cs",
+              "RelativeToolTip": "HotelReservation.UI\\Forms\\ReservationForm.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIMAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T17:15:31.649Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
