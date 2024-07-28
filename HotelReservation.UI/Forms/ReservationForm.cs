@@ -290,7 +290,7 @@ namespace HotelReservation.UI
         }
         public List<Booking> SearchBookings(DateTime? checkinDate, DateTime? checkoutDate, int? roomNumber)
         {
-            var query = _bookingService.GetAll().AsQueryable();
+            var query = _bookingService.GetAll();
 
 
             if (checkinDate.HasValue)
@@ -312,24 +312,22 @@ namespace HotelReservation.UI
         }
 
 
-        private void nmGuest_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DateTime? checkinDate = dtGiris.Value.Date;
             DateTime? checkoutDate = dtCikis.Value.Date;
-            int? roomNumber = null;
-            if (cmbRoom.SelectedValue != null)
-            {
-                roomNumber = (int)cmbRoom.SelectedValue;
-            }
+            int? roomNumber = (int)cmbRoom.SelectedValue; ;
+
 
             var results = SearchBookings(checkinDate, checkoutDate, roomNumber);
 
             dtReservation.DataSource = results;
+        }
+        private void nmGuest_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
