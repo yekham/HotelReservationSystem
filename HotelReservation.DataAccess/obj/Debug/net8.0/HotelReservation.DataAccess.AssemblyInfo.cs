@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HotelReservation.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe648b6d175e74ec1e7751756121ae81f9a175a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2125e756a9c2a528aca3a62a46e8f7817310e4c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("HotelReservation.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HotelReservation.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

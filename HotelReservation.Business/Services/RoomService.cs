@@ -53,5 +53,9 @@ namespace HotelReservation.Business.Services
                 _roomRepository.Update(entity);
             }
         }
+        public Room GetByID(int roomId)
+        {
+            return _roomRepository.GetByIDInt(roomId);
+        }
     }
 }

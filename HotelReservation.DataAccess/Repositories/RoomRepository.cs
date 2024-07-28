@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelReservation.DataAccess.Repositories
 {
-    public class RoomRepository : GenericRepository<Room>
+    public class RoomRepository : GenericRepository<Room> 
     {
         public RoomRepository(ApplicationDbContext context) : base(context)
         {
@@ -17,6 +17,16 @@ namespace HotelReservation.DataAccess.Repositories
         public IEnumerable<Room> GetAllWithRoomTypes()
         {
             return _context.Rooms.Include(r => r.RoomType).ToList();
+        }
+        public Room GetByIDInt(int id)
+        {
+            var entity = _dbSet.Find(id);
+
+            if (entity == null)
+            {
+                throw new Exception("Bulunamadı");
+            }
+            return entity;
         }
     }
 }

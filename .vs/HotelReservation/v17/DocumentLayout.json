@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|solutionrelative:hotelreservation.ui\\forms\\reservationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{16AFCB5A-944C-4B83-8B1E-532F08C6C837}|HotelReservation.Business\\HotelReservation.Business.csproj|c:\\source\\repos\\hotelreservation\\hotelreservation.business\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16AFCB5A-944C-4B83-8B1E-532F08C6C837}|HotelReservation.Business\\HotelReservation.Business.csproj|solutionrelative:hotelreservation.business\\services\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FB307CF-6CBC-4662-8809-DF66D5D6E714}|HotelReservation.DataAccess\\HotelReservation.DataAccess.csproj|c:\\source\\repos\\hotelreservation\\hotelreservation.dataaccess\\repositories\\roomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FB307CF-6CBC-4662-8809-DF66D5D6E714}|HotelReservation.DataAccess\\HotelReservation.DataAccess.csproj|solutionrelative:hotelreservation.dataaccess\\repositories\\roomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|c:\\source\\repos\\hotelreservation\\hotelreservation.ui\\forms\\reservationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EBCAF489-4B6E-4641-9951-203A7A3E5156}|HotelReservation.UI\\HotelReservation.UI.csproj|solutionrelative:hotelreservation.ui\\forms\\reservationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 242,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +82,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RoomService.cs",
+              "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.Business\\Services\\RoomService.cs",
+              "RelativeDocumentMoniker": "HotelReservation.Business\\Services\\RoomService.cs",
+              "ToolTip": "C:\\source\\repos\\HotelReservation\\HotelReservation.Business\\Services\\RoomService.cs",
+              "RelativeToolTip": "HotelReservation.Business\\Services\\RoomService.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACYAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T07:18:03.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "RoomRepository.cs",
+              "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.DataAccess\\Repositories\\RoomRepository.cs",
+              "RelativeDocumentMoniker": "HotelReservation.DataAccess\\Repositories\\RoomRepository.cs",
+              "ToolTip": "C:\\source\\repos\\HotelReservation\\HotelReservation.DataAccess\\Repositories\\RoomRepository.cs",
+              "RelativeToolTip": "HotelReservation.DataAccess\\Repositories\\RoomRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T07:15:18.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.DataAccess\\Context\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "HotelReservation.DataAccess\\Context\\ApplicationDbContext.cs",
@@ -87,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Booking.cs",
               "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.Entities\\Models\\Booking.cs",
               "RelativeDocumentMoniker": "HotelReservation.Entities\\Models\\Booking.cs",
@@ -100,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "GuestForm.cs",
               "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\GuestForm.cs",
               "RelativeDocumentMoniker": "HotelReservation.UI\\Forms\\GuestForm.cs",
@@ -112,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ReservationForm.cs [Design]",
               "DocumentMoniker": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\ReservationForm.cs",
               "RelativeDocumentMoniker": "HotelReservation.UI\\Forms\\ReservationForm.cs",
@@ -130,7 +164,7 @@
               "RelativeDocumentMoniker": "HotelReservation.UI\\Forms\\ReservationForm.cs",
               "ToolTip": "C:\\source\\repos\\HotelReservation\\HotelReservation.UI\\Forms\\ReservationForm.cs",
               "RelativeToolTip": "HotelReservation.UI\\Forms\\ReservationForm.cs",
-              "ViewState": "AQIAABUBAAAAAAAAAAAmwEcBAABFAAAA",
+              "ViewState": "AQIAAFAAAAAAAAAAAAD4v3MAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T17:15:31.649Z",
               "EditorCaption": ""

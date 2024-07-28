@@ -105,18 +105,22 @@ namespace HotelReservation.UI
             cmbRoom.DataSource = rooms;
         }
 
-
+        Room selectedRoom;
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbRoom.SelectedValue != null)
+            {
+                int selectedRoomId = (int)cmbRoom.SelectedValue;
+                selectedRoom = _roomService.GetByID(selectedRoomId);
+            }
         }
 
         //public static List<Booking> bookingsList { get; set; } = new List<Booking>();
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
-            var selectedRoom = _roomService.GetAll()
-                .FirstOrDefault(r => r.RoomTypeID == selectedRoomTypeId && r.HotelId == selectedHotelId);
+/*            var selectedRoom = _roomService.GetAll()
+                .FirstOrDefault(r => r.RoomTypeID == selectedRoomTypeId && r.HotelId == selectedHotelId);*/
 
             int numberOfRecords = (int)nmGuest.Value;
             if (numberOfRecords == 0)
