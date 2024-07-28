@@ -79,7 +79,7 @@ namespace HotelReservation.UI.Forms
             }
             else
             {
-                MessageBox.Show("Lutfen kisi sayisi seciniz.");
+                MessageBox.Show("Lütfen kişi sayısı seciniz.");
             }
         }
     }
