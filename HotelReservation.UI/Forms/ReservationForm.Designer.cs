@@ -44,6 +44,7 @@
             btnResUpdate = new Button();
             label1 = new Label();
             cmbRoom = new ComboBox();
+            btnSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)nmGuest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtReservation).BeginInit();
             SuspendLayout();
@@ -150,7 +151,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(954, 791);
+            btnDelete.Location = new Point(539, 791);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(244, 83);
             btnDelete.TabIndex = 6;
@@ -160,12 +161,13 @@
             // 
             // btnResUpdate
             // 
-            btnResUpdate.Location = new Point(1345, 791);
+            btnResUpdate.Location = new Point(961, 791);
             btnResUpdate.Name = "btnResUpdate";
             btnResUpdate.Size = new Size(244, 83);
             btnResUpdate.TabIndex = 6;
             btnResUpdate.Text = "Rezervasyon Güncelle";
             btnResUpdate.UseVisualStyleBackColor = true;
+            btnResUpdate.Click += btnResUpdate_Click;
             // 
             // label1
             // 
@@ -184,11 +186,22 @@
             cmbRoom.TabIndex = 8;
             cmbRoom.SelectedIndexChanged += cmbRoom_SelectedIndexChanged;
             // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(1328, 791);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(205, 83);
+            btnSearch.TabIndex = 9;
+            btnSearch.Text = "Rezervasyon Ara";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
             // ReservationForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1702, 1217);
+            Controls.Add(btnSearch);
             Controls.Add(cmbRoom);
             Controls.Add(dtReservation);
             Controls.Add(btnResUpdate);
@@ -232,5 +245,6 @@
         private Button btnResUpdate;
         private Label label1;
         private ComboBox cmbRoom;
+        private Button btnSearch;
     }
 }

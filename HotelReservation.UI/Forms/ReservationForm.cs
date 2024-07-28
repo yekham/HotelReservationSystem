@@ -111,7 +111,7 @@ namespace HotelReservation.UI
 
         }
 
-        public static List<Booking> bookingsList { get; set; } = new List<Booking>();
+        //public static List<Booking> bookingsList { get; set; } = new List<Booking>();
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
@@ -134,11 +134,13 @@ namespace HotelReservation.UI
                     {
                         foreach (var guest in GuestList.Guests)
                         {
+                            var numberOfDays = (dtCikis.Value - dtGiris.Value).Days;
+                            var totalPrice = numberOfDays * numberOfRecords * selectedRoom.RoomType.PricePerNight;
                             Booking booking = new Booking()
                             {
                                 CheckinDate = dtGiris.Value,
                                 CheckoutDate = dtCikis.Value,
-                                TotalPrice = selectedRoom.RoomType.PricePerNight,
+                                TotalPrice = totalPrice,
                                 RoomID = selectedRoom.Id,
                                 Room = selectedRoom,
                                 GuestID = guest.Id,
@@ -149,7 +151,7 @@ namespace HotelReservation.UI
 
                             _bookingService.Create(booking);
                             //MessageBox.Show(booking.Guest.FirstName);
-                            bookingsList.Add(booking);
+                            //bookingsList.Add(booking);
                             LoadBookings();
                             //MessageBox.Show(guest.FirstName.ToString());
 
@@ -204,7 +206,7 @@ namespace HotelReservation.UI
                     try
                     {
                         _bookingService.Delete(selectedBooking.Id);
-                        bookingsList.Remove(selectedBooking);
+                        //bookingsList.Remove(selectedBooking);
 
                         LoadBookings();
                     }
@@ -240,7 +242,7 @@ namespace HotelReservation.UI
             dtReservation.Columns["Guest"].Visible = false;
             dtReservation.Columns["UpdatedDate"].Visible = false;
             dtReservation.Columns["BookingGuests"].Visible = false;
-            dtReservation.Columns["GuestID"].Visible = false ;
+            dtReservation.Columns["GuestID"].Visible = false;
             dtReservation.Columns["Id"].Visible = false;
 
 
@@ -259,10 +261,75 @@ namespace HotelReservation.UI
 
 
         }
+
+
+        private void btnResUpdate_Click(object sender, EventArgs e)
+        {
+            if (selectedBooking != null)
+            {
+                try
+                {
+                    selectedBooking.CheckinDate = dtGiris.Value;
+                    selectedBooking.CheckoutDate = dtCikis.Value;
+                    selectedBooking.RoomID = (int)cmbRoom.SelectedValue;
+                    selectedBooking.UpdatedDate = DateTime.Now;
+
+                    _bookingService.Update(selectedBooking);
+                    LoadBookings();
+                    MessageBox.Show("Rezervasyon baþarýyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Güncelleme iþlemi sýrasýnda bir hata oluþtu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen güncellemek istediðiniz rezervasyonu seçin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public List<Booking> SearchBookings(DateTime? checkinDate, DateTime? checkoutDate, int? roomNumber)
+        {
+            var query = _bookingService.GetAll().AsQueryable();
+
+
+            if (checkinDate.HasValue)
+            {
+                query = query.Where(b => b.CheckinDate.Date == checkinDate.Value.Date);
+            }
+
+            if (checkoutDate.HasValue)
+            {
+                query = query.Where(b => b.CheckoutDate.Date == checkoutDate.Value.Date);
+            }
+
+            if (roomNumber.HasValue)
+            {
+                query = query.Where(b => b.RoomID == roomNumber.Value);
+            }
+
+            return query.ToList();
+        }
+
+
         private void nmGuest_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            DateTime? checkinDate = dtGiris.Value.Date;
+            DateTime? checkoutDate = dtCikis.Value.Date;
+            int? roomNumber = null;
+            if (cmbRoom.SelectedValue != null)
+            {
+                roomNumber = (int)cmbRoom.SelectedValue;
+            }
+
+            var results = SearchBookings(checkinDate, checkoutDate, roomNumber);
+
+            dtReservation.DataSource = results;
+        }
     }
 }
