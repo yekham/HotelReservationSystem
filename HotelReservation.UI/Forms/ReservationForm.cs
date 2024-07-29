@@ -132,6 +132,17 @@ namespace HotelReservation.UI
 
             try
             {
+                var existingRoomBooking = _bookingService.GetAll()
+                .FirstOrDefault(b => b.RoomID == selectedRoom.Id &&
+                              ((dtGiris.Value >= b.CheckinDate && dtGiris.Value < b.CheckoutDate) ||
+                               (dtCikis.Value > b.CheckinDate && dtCikis.Value <= b.CheckoutDate) ||
+                               (dtGiris.Value <= b.CheckinDate && dtCikis.Value >= b.CheckoutDate)));
+
+                if (existingRoomBooking != null)
+                {
+                    MessageBox.Show("Seçilen tarihler arasýnda bu oda için zaten bir rezervasyon var. Lütfen farklý tarihler seçin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 using (GuestForm guestForm = new GuestForm(numberOfRecords))
                 {
                     if (guestForm.ShowDialog() == DialogResult.OK)
@@ -202,10 +213,10 @@ namespace HotelReservation.UI
         {
             if (selectedBooking != null)
             {
-                var confirmResult = MessageBox.Show("Bu rezervasyonu silmek istediðinizden emin misiniz?",
+                var deleteResult = MessageBox.Show("Bu rezervasyonu silmek istediðinizden emin misiniz?",
                                                      "Onay",
                                                      MessageBoxButtons.YesNo);
-                if (confirmResult == DialogResult.Yes)
+                if (deleteResult == DialogResult.Yes)
                 {
                     try
                     {
@@ -294,25 +305,25 @@ namespace HotelReservation.UI
         }
         public List<Booking> SearchBookings(DateTime? checkinDate, DateTime? checkoutDate, int? roomNumber)
         {
-            var query = _bookingService.GetAll();
+            var bookings = _bookingService.GetAll();
 
 
             if (checkinDate.HasValue)
             {
-                query = query.Where(b => b.CheckinDate.Date == checkinDate.Value.Date);
+                bookings = bookings.Where(b => b.CheckinDate.Date == checkinDate.Value.Date);
             }
 
             if (checkoutDate.HasValue)
             {
-                query = query.Where(b => b.CheckoutDate.Date == checkoutDate.Value.Date);
+                bookings = bookings.Where(b => b.CheckoutDate.Date == checkoutDate.Value.Date);
             }
 
             if (roomNumber.HasValue)
             {
-                query = query.Where(b => b.RoomID == roomNumber.Value);
+                bookings = bookings.Where(b => b.RoomID == roomNumber.Value);
             }
 
-            return query.ToList();
+            return bookings.ToList();
         }
 
 
@@ -325,9 +336,9 @@ namespace HotelReservation.UI
             int? roomNumber = (int)cmbRoom.SelectedValue; ;
 
 
-            var results = SearchBookings(checkinDate, checkoutDate, roomNumber);
+            var searchingResult = SearchBookings(checkinDate, checkoutDate, roomNumber);
 
-            dtReservation.DataSource = results;
+            dtReservation.DataSource = searchingResult;
         }
         private void nmGuest_ValueChanged(object sender, EventArgs e)
         {
